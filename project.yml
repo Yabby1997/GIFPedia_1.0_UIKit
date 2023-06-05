@@ -15,7 +15,13 @@ packages:
     from: 5.6.0
   Nuke:
     url: https://github.com/kean/Nuke
-    from: 11.3.0
+    from: 10.0.0
+  FLAnimatedImage:
+    url: https://github.com/Flipboard/FLAnimatedImage
+    from: 1.0.17
+  Nuke-FLAnimatedImage-Plugin:
+    url: https://github.com/kean/Nuke-FLAnimatedImage-Plugin
+    from: 8.0.0
 
 targets:
   GIFPedia:
@@ -51,4 +57,9 @@ targets:
       - package: SnapKit
         product: SnapKit
       - package: Nuke
-        product: NukeUI
+        product: Nuke
+      - package: FLAnimatedImage
+        product: FLAnimatedImage
+      - package: Nuke-FLAnimatedImage-Plugin
+        product: NukeFLAnimatedImagePlugin
+

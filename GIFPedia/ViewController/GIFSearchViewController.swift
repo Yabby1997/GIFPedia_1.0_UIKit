@@ -28,10 +28,9 @@ final class GIFSearchViewController: UIViewController {
 
     // MARK: - Properties
 
-    private let apiKey: String = "7FckdoA95APjXjzIPCRm9he4wpaa6DFC"
-    private var giphyEntities: [GiphyEntity] = [] {
-        didSet { reload() }
-    }
+    // https://developers.giphy.com/dashboard/?create=true
+    private let apiKey: String = "ENTER_YOUR_GIPHY_API_KEY_FROM_ABOVE_LINK"
+    private var giphyEntities: [GiphyEntity] = []
     private var searchText: String { searchController.searchBar.text ?? "" }
 
     // MARK: - Lifecycle Callbacks
@@ -84,13 +83,10 @@ final class GIFSearchViewController: UIViewController {
                   let data,
                   let result = try? self.decoder.decode(GiphySearchResult.self, from: data) else { return }
             self.giphyEntities = result.data
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+            }
         }.resume()
-    }
-
-    private func reload() {
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
-        }
     }
 }
 
